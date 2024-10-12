@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Custom cake</title>
+</head>
+<body>
+<div class="container">
+        <h1>Let's Bake</h1>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="index.html">About</a></li>
+                <li>
+                    <select id="category-select">
+                        <option value="" disabled selected>Categories</option>
+                        <option value="birthday.html">Birthday Cake</option>
+                        <option value="wedding.html">Wedding Cake</option>
+                        <option value="custom.html">Custom Cake</option>
+                    </select>
+                </li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="./index.html">Contact</a></li>
+            </ul>
+        </nav>
+</div>
+    
+
+<div class="container"> 
+    <!-- Custom Cake Order Form -->
+    <section class="custom-order">
+      <h2>PERSONALISE YOU COUSTOM CAKE!</h2>
+        <p>Fill in the details to create your dream cake!</p>
+        <form action="submit-order.html" method="POST">
+             <label for="flavor">Choose Cake Flavor:</label>
+             <select id="flavor" name="flavor">
+                    <option value="chocolate">Chocolate</option>
+                    <option value="vanilla">Vanilla</option>
+                    <option value="red-velvet">Red Velvet</option>
+                    <option value="strawberry">Strawberry</option>
+             </select>
+
+             <label for="size">Select Cake Size:</label>
+             <select id="size" name="size">
+                    <option value="6-inch">6-inch (Serves 4-6)</option>
+                    <option value="8-inch">8-inch (Serves 8-10)</option>
+                    <option value="10-inch">10-inch (Serves 12-15)</option>
+             </select>
+             
+             <label for="theme">Theme/Design:</label>
+             <input type="text" id="theme" name="theme" placeholder="E.g., Floral, Superhero, Elegant" required>
+
+             <label for="message">Special Message on Cake:</label>
+             <input type="text" id="message" name="message" placeholder="Your message (optional)">
+                
+             <label for="notes">Additional Notes:</label>
+             <textarea id="notes" name="notes" rows="4" placeholder="Additional customizations or requests"></textarea>
+                
+          <button type="submit" class="btn1 btn2">Place Order</button>
+        </form>
+    </section>
+
+        
+<footer id="ft">
+    <p>&copy; 2024 Let's Bake | All rights reserved</p>
+</footer>
+</div>
+
+<script src="./script.js"></script> 
+</body>
+</html>
+
+
+
+
+
+   

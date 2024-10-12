@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>let's bake</title>
+</head>
+   
+<body>
+   
+    <section id ="header" >
+      <div class="container">
+        <h1>Let's Bake</h1>
+        <nav>
+            <ul>
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li>
+                    <select id="category-select">
+                        <option value="" disabled selected>Categories</option>
+                        <option value="birthday.html">Birthday Cake</option>
+                        <option value="wedding.html">Wedding Cake</option>
+                        <option value="custom.html">Custom Cake</option>
+                    </select>
+                </li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="#contacts">Contact</a></li>
+            </ul>
+        </nav>
+      </div>
+      <h1 id="w">Welcome to Let's Bake</h1>
+      <div class="slider">
+        <div class="slides">
+            <div class="slide"><img src="./images/chocolate.jpeg" alt="Image 1" height="500" width="400"></div>
+            <div class="slide"><img src="./images/redvelvet.jpeg" alt="Image 2" height="500" width="400"></div>
+            <div class="slide"><img src="./images/wedding.jpeg" alt="Image 3"  height="500" width="400"></div>
+            
+        </div>
+        <div class="dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+    </section>
+    <section id="about">
+       <div class="aboutus">
+        <h1>About us</h1>
+        <h2>Welcome to Let's Bake!</h2>
+        <p>At Let's Bake, we bring the sweetest treats right to your doorstep.<br> 
+            Whether you're celebrating a birthday, anniversary, or just craving a delicious dessert,<br> 
+            we have a wide range of cakes for every occasion. From classic chocolate indulgence to custom-themed creations,<br>
+             our cakes are freshly baked with love, ensuring a perfect treat for you and your loved ones.</p>
+        <h2>Wide Variety of Flavors</h2>     
+        <p>Our cakes are crafted with premium ingredients, offering a wide selection of flavors such as vanilla,<br> 
+            red velvet, black forest, and more. With the option to customize your cake, you can choose the size,<br>
+             design, and flavor that best suits your celebration. Explore our delightful menu and find the perfect cake to satisfy your sweet tooth.</p>
+        <h2>Easy Ordering & Fast Delivery</h2>
+        <p>Ordering from Let's Bake is easy and hassle-free. Simply browse our collection,<br>
+            place your order, and let us handle the rest.<br>
+            We offer fast and reliable delivery services to ensure that your cake arrives fresh and on time, <br>
+            ready to make your special moments even sweeter!</p>
+      </div>      
+    </section>
+    <!------contact us------->
+    <section id="contacts">
+     
+        
+            <div class="row">
+                <div class="contact-left"> 
+                    <h2 class="sub-title">Contact Us</h2>
+                    <p><i class="fa-solid fa-paper-plane"></i>conatact@gmail.com</p>
+                    <p><i class="fa-solid fa-phone"></i>3778752892</p>
+                    <div class="social-icons">
+                       <a href="#"><i class="fa-brands fa-instagram"></i></a> 
+                       <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                       <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+                </div>
+                    <div class="contact-right">
+                     <form action="#" method="post">
+                        <input type="text" name="Name" placeholder="Your name" required>
+                        <input type="email" name="Email" placeholder="Your email" required>
+                        <textarea type="Message" rows="6" placeholder="Your message"></textarea>
+                        <button type="submit" class="btn1 btn2">submit</button>
+                     </form>
+                    </div>
+                
+               
+            
+
+        </div>
+    </section>
+    <script src="script.js"></script>
+    <footer id="ft">
+        <p>&copy; 2024 Let's Bake| All Rights Reserved.</p>
+    </footer>
+  
+</body>
+</html>

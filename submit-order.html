@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+</head>
+<body>
+    <div class="container">
+        <h1>ORDER CONFIRMATION</h1>
+        <div id="order-details">
+            <p>Loading your order...</p>
+        </div>
+        <button id="add-to-cart">Add to Cart</button>
+        <button id="back">Go Back</button>
+    </div>
+
+    <script>
+        function displayOrderDetails() {
+            const flavor = localStorage.getItem('flavor');
+            const size = localStorage.getItem('size');
+            const theme = localStorage.getItem('theme');
+            const message = localStorage.getItem('message');
+            const notes = localStorage.getItem('notes');
+
+            const orderDetailsDiv = document.getElementById('order-details');
+
+            if (flavor && size && theme) {
+                orderDetailsDiv.innerHTML = `
+                    <p><strong>Flavor:</strong> ${flavor}</p>
+                    <p><strong>Size:</strong> ${size}</p>
+                    <p><strong>Theme:</strong> ${theme}</p>
+                    <p><strong>Message:</strong> ${message}</p>
+                    <p><strong>Additional Notes:</strong> ${notes}</p>
+                `;
+            } else {
+                orderDetailsDiv.innerHTML = "<p>No order details found.</p>";
+            }
+        }
+
+        window.onload = displayOrderDetails;
+
+        document.getElementById('add-to-cart').addEventListener('click', function() {
+            const flavor = localStorage.getItem('flavor');
+            const size = localStorage.getItem('size');
+            const theme = localStorage.getItem('theme');
+            const message = localStorage.getItem('message');
+            const notes = localStorage.getItem('notes');
+
+            const cartItem = {
+                name: `${flavor} Cake (${size})`,
+                theme: theme,
+                message: message,
+                notes: notes,
+                quantity: 1,
+                price: 1000,  // You can set a price based on size or any other logic
+            };
+
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(cartItem);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert("Order added to cart!");
+            window.location.href = 'cart.html';  // Redirect to the cart
+        });
+
+        document.getElementById('back').addEventListener('click', function() {
+            window.location.href = 'custom.html'; 
+        });
+    </script>
+</body>
+</html>

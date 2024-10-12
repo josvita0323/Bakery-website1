@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Birthday Cakes</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Let's Bake</h1>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="index.html">About</a></li>
+                <li>
+                    <select id="category-select">
+                        <option value="" disabled selected>Categories</option>
+                        <option value="birthday.html">Birthday Cake</option>
+                        <option value="wedding.html">Wedding Cake</option>
+                        <option value="custom.html">Custom Cake</option>
+                    </select>
+                </li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="./index.html">Contact</a></li>
+            </ul>
+        </nav>
+      </div>
+    <h1>BIRTHDAY CAKES!</h1>
+    <div class="container">
+       
+        <div class="cakes" data-ingredients="Flour, Sugar, Butter, Chocolate, Vanilla Extract">
+            <img src="./images/b1.jpeg" alt="Tom and Jerry theme Cake" height="300" width="250">
+            <div class="text">
+                <p>Tom and Jerry theme Cake<i class="fa-solid fa-leaf"></i></p>
+                <p>₹800</p>
+                <p><i class="fa-solid fa-star"></i> 4.4</p>
+                <button class="btn1 btn2"  data-name="Tom and Jerry theme Cake" data-price="800" data-img="./images/b1.jpeg">Add to Cart</button>
+            </div>
+            <div class="ingredients" style="display:none;">
+                <p><strong>Ingredients:</strong> Flour, Sugar, Butter, Chocolate, Vanilla Extract</p>
+            </div>
+        </div>
+
+
+        <div class="cakes" data-ingredients="Flour, Sugar, Vanilla, Butter">
+            <img src="./images/b2.jpeg" alt="Vanilla Cake" height="300" width="250">
+            <div class="text">
+                <p>Vanilla Cake</p>
+                <p>₹550</p>
+                <p><i class="fa-solid fa-star"></i> 3.4</p>
+                <button class="btn1 btn2" data-name="Vanilla Cake" data-price="550" data-img="./images/b2.jpeg">Add to Cart</button>
+            </div>
+            <div class="ingredients" style="display:none;">
+                <p><strong>Ingredients:</strong> Flour, Sugar, Vanilla, Butter</p>
+            </div>
+        </div>
+
+
+        <div class="cakes"  data-ingredients="Flour, Peanut Butter, Vanilla, Sugar">
+            <img src="./images/b3.jpeg" alt="vanilla-peanut butter cake" height="300" width="250">
+            <div class="text">
+                <p>Vanilla-peanut butter cake<i class="fa-solid fa-leaf"></i></p>
+                <p>₹600</p>
+                <p><i class="fa-solid fa-star"></i> 4.7</p>
+                <button class="btn1 btn2" data-name="Vanilla Cake" data-price="550" data-img="./images/b3.jpeg">Add to Cart</button>
+            </div>
+            <div class="ingredients" style="display:none;">
+                <p><strong>Ingredients:</strong> Flour, Peanut Butter, Vanilla, Sugar</p>
+            </div>
+        </div>
+
+        
+        <div class="cakes" data-ingredients="Flour, Cocoa Powder, Butter, Sugar">
+            <img src="./images/chocolate.jpeg" alt="Chocolate cake" height="300" width="250">
+            <div class="text">
+                <p>Chocolate cake</p>
+                <p>₹900</p>
+                <p><i class="fa-solid fa-star"></i> 4.9</p>
+                <button class="btn1 btn2" data-name="Chocolate cake" data-price="900" data-img="./images/chocolate.jpeg">Add to Cart</button>
+            </div>
+            <div class="ingredients" style="display:none;">
+                <p><strong>Ingredients:</strong> Flour, Cocoa Powder, Butter, Sugar</p>
+            </div>
+        </div>
+
+
+        <div class="cakes"  data-ingredients="Flour, Red Velvet, Cream Cheese, Butter, Sugar">
+            <img src="./images/redvelvet.jpeg" alt="Red velvet cake" height="300" width="250">
+            <div class="text">
+                <p>Red velvet cake</p>
+                <p>₹1150</p>
+                <p><i class="fa-solid fa-star"></i> 4.9</p>
+                <button class="btn1 btn2" data-name="Red velvet cake" data-price="1150" data-img="./images/redvelvet.jpeg">Add to Cart</button>
+            </div>
+            <div class="ingredients" style="display:none;">
+                <p><strong>Ingredients:</strong> Flour, Red Velvet, Cream Cheese, Butter, Sugar</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+    <footer id="ft">
+        <p>&copy; 2024 Let's Bake. All Rights Reserved.</p>
+    </footer>
+  
+</body>
+</html>
