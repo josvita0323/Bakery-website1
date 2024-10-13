@@ -1,10 +1,9 @@
-//
-
-document.addEventListener("DOMContentLoaded", function() {
+// Cakes toggle ingredients functionality
+document.addEventListener("DOMContentLoaded", function () {
     const cakes = document.querySelectorAll('.cakes');
 
     cakes.forEach(cake => {
-        cake.addEventListener('click', function() {
+        cake.addEventListener('click', function () {
             const ingredients = cake.querySelector('.ingredients');
 
             // Toggle visibility of ingredients
@@ -17,87 +16,89 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
-
-
-
 // Slider functionality
 const slides = document.querySelector('.slides');
 const slideCount = document.querySelectorAll('.slide').length;
 const dots = document.querySelectorAll('.dot');
 let currentIndex = 0;
 
-function showNextSlide() {
-    currentIndex++;
-    if (currentIndex >= slideCount) {
-        currentIndex = 0;
+// Ensure the slides element exists before applying slider logic
+if (slides) {
+    function showNextSlide() {
+        currentIndex = (currentIndex + 1) % slideCount;
+        updateSlider();
     }
-    updateSlider();
-}
 
-function updateSlider() {
-    slides.style.transform = `translateX(${-currentIndex * 100}%)`;
+    function updateSlider() {
+        slides.style.transform = `translateX(${-currentIndex * 100}%)`; // Corrected transform syntax
+
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    setInterval(showNextSlide, 3000);
 
     dots.forEach((dot, index) => {
-        if (index === currentIndex) {
-            dot.classList.add('active');
-        } else {
-            dot.classList.remove('active');
+        dot.addEventListener('click', () => {
+            currentIndex = index;
+            updateSlider();
+        });
+    });
+} else {
+    console.error("Slides container not found.");
+}
+
+// Category Dropdown Redirect functionality
+const categorySelect = document.getElementById('category-select');
+if (categorySelect) {
+    categorySelect.addEventListener('change', function () {
+        const selectedValue = this.value;
+        if (selectedValue) {
+            window.location.href = selectedValue;
         }
     });
 }
 
-setInterval(showNextSlide, 3000);
-
-dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        currentIndex = index;
-        updateSlider();
-    });
-});
-
-// Category Dropdown Redirect
-document.getElementById('category-select').addEventListener('change', function() {
-    const selectedValue = this.value; 
-    if (selectedValue) {
-        window.location.href = selectedValue;  
-    }
-});
-
 // Custom Cake Form Submission
-document.getElementById('custom-cake-form').addEventListener('submit', function(event) {
-    event.preventDefault();
+const customCakeForm = document.getElementById('custom-cake-form');
+if (customCakeForm) {
+    customCakeForm.addEventListener('submit', function (event) {
+        event.preventDefault();
 
-    const flavor = document.getElementById('flavor').value;
-    const size = document.getElementById('size').value;
-    const theme = document.getElementById('theme').value;
-    const message = document.getElementById('message').value;
-    const notes = document.getElementById('notes').value;
+        const flavor = document.getElementById('flavor').value;
+        const size = document.getElementById('size').value;
+        const theme = document.getElementById('theme').value;
+        const message = document.getElementById('message').value;
+        const notes = document.getElementById('notes').value;
 
-    // Feedback message before redirection
-    alert('Your custom cake order has been submitted!');
+        // Basic validation
+        if (!flavor || !size || !theme || !message) {
+            alert('Please fill in all required fields.');
+            return;
+        }
 
-    // Store the data in localStorage
-    try {
-        localStorage.setItem('flavor', flavor);
-        localStorage.setItem('size', size);
-        localStorage.setItem('theme', theme);
-        localStorage.setItem('message', message);
-        localStorage.setItem('notes', notes);
-    } catch (e) {
-        console.error('Error saving data to localStorage:', e);
-    }
+        // Feedback message before redirection
+        alert('Your custom cake order has been submitted!');
 
-    // Redirect to the submission confirmation page
-    window.location.href = 'submit-order.html';
-});
+        // Store the data in localStorage with error handling
+        try {
+            localStorage.setItem('customCakeOrder', JSON.stringify({ flavor, size, theme, message, notes }));
+        } catch (e) {
+            console.error('Error saving data to localStorage:', e);
+        }
+
+        // Redirect to the submission confirmation page
+        window.location.href = 'submit-order.html';
+    });
+}
 
 // Add to Cart functionality
-const addToCartButtons = document.querySelectorAll('.btn1.btn2');
+const addToCartButtons = document.querySelectorAll('.btn1, .btn2');  // Selecting either .btn1 or .btn2
 
 addToCartButtons.forEach(button => {
     button.addEventListener('click', function () {
-        const productElement = this.closest('.cakes');  
+        const productElement = this.closest('.cakes');
         const productName = productElement.querySelector('.text p').textContent.trim();
         const productPrice = parseFloat(productElement.querySelector('.text p:nth-child(2)').textContent.replace('₹', '').trim());
         const productImage = productElement.querySelector('img').src;
@@ -110,7 +111,7 @@ addToCartButtons.forEach(button => {
         };
 
         // Add item to cart or update quantity if it already exists
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
         const existingItemIndex = cart.findIndex(item => item.name === cartItem.name);
 
         if (existingItemIndex !== -1) {
@@ -136,16 +137,16 @@ const totalPriceElement = document.getElementById('total-price');
 
 // Function to update the total price
 function updateTotalPrice() {
-    let totalPrice = 0;
-    cartItems.forEach(item => {
-        totalPrice += item.price * item.quantity;
-    });
-    totalPriceElement.textContent = `Total: ₹${totalPrice}`;
+    const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    if (totalPriceElement) {
+        totalPriceElement.textContent = `Total: ₹${totalPrice}`;
+    }
 }
 
 // Function to render the cart items
 function renderCartItems() {
-    cartContainer.innerHTML = ''; 
+    if (!cartContainer) return; // Ensure cartContainer exists
+    cartContainer.innerHTML = '';
 
     if (cartItems.length === 0) {
         const emptyMessage = document.createElement('p');
@@ -157,12 +158,12 @@ function renderCartItems() {
     cartItems.forEach(item => {
         const cartItemElement = document.createElement('div');
         cartItemElement.classList.add('cart-item');
-        
+
         const img = document.createElement('img');
         img.classList.add('cart-item-img');
         img.src = item.imgSrc;
         img.alt = item.name;
-        
+
         const name = document.createElement('p');
         name.textContent = item.name;
 
@@ -171,16 +172,16 @@ function renderCartItems() {
 
         const quantity = document.createElement('p');
         quantity.textContent = `Quantity: ${item.quantity}`;
-        
+
         cartItemElement.appendChild(img);
         cartItemElement.appendChild(name);
         cartItemElement.appendChild(price);
         cartItemElement.appendChild(quantity);
-        
+
         cartContainer.appendChild(cartItemElement);
     });
 
-    updateTotalPrice(); 
+    updateTotalPrice();
 }
 
 // Initialize the cart on page load
@@ -188,8 +189,10 @@ renderCartItems();
 
 // Checkout button functionality
 const checkoutButton = document.getElementById('checkout');
-checkoutButton.addEventListener('click', () => {
-    alert('Thank you for your purchase!');
-    localStorage.removeItem('cart'); 
-    window.location.href = 'index.html'; 
-});
+if (checkoutButton) {
+    checkoutButton.addEventListener('click', () => {
+        alert('Thank you for your purchase!');
+        localStorage.removeItem('cart');
+        window.location.href = 'index.html';
+    });
+}
